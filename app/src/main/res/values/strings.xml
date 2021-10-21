@@ -4,17 +4,22 @@
     <!-- Books Tab-->
     <string name="title_books">Books</string>
     <string name="title_toolbar_books">Books Wish List</string>
+    <string name="add_book_text">Add Book</string>
+    <string name="detail_text">Detail</string>
+    <string name="book_link_text">Book Link</string>
 
     <!-- Search Tab-->
     <string name="title_search">Search</string>
     <string name="title_toolbar_search">ISBN Search</string>
     <string name="search_book_text">Search a book on the top bar to view its information
         or tap on the camera icon to scan code.</string>
+    <string name="view_detail_text">View Details</string>
 
     <!-- Library Tab-->
     <string name="title_library">Library</string>
     <string name="add_list_text">Add to List</string>
     <string name="get_book_text">Get Book</string>
+    <string name="read_text">Read</string>
 
     <!-- Book Detail-->
     <string name="author_title">Author</string>
