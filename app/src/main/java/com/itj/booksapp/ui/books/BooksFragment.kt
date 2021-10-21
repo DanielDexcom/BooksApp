@@ -34,13 +34,13 @@ class BooksFragment : Fragment() {
         binding.idBookWishList
 
         // Uncomment to see RecyclerView
-        val adapter = BooksAdapter()
-        binding.idBookWishList.adapter = adapter
-        booksViewModel.booksLiveData.observe(viewLifecycleOwner) {
-            it?.let {
-                adapter.data = it
-            }
-        }
+//        val adapter = BooksAdapter()
+//        binding.idBookWishList.adapter = adapter
+//        booksViewModel.booksLiveData.observe(viewLifecycleOwner, {
+//            it?.let {
+//                adapter.data = it
+//            }
+//        })
 
         return root
     }
