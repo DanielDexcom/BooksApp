@@ -7,8 +7,8 @@ import com.itj.booksapp.data.bookList
 import com.itj.booksapp.data.model.Book
 import com.itj.booksapp.data.repository.BookRepository
 
-class MockBookDataSource(resources: Resources): BookRepository {
-    private val initialBookList = bookList(resources)
+class MockBookDataSource(resources: Resources) : BookRepository {
+    private var initialBookList = bookList(resources)
     private val bookLiveData = MutableLiveData(initialBookList)
 
     override fun getBookForId(id: Int): Book? {
@@ -20,6 +20,32 @@ class MockBookDataSource(resources: Resources): BookRepository {
 
     override fun getBookList(): LiveData<List<Book>> {
         return bookLiveData;
+    }
+
+    override fun deleteBookForId(id: Int): Boolean {
+        val newBooks = bookLiveData.value?.let { books ->
+            books.filterNot { it.id == id }
+        }
+        if (newBooks != null) {
+            return if (newBooks.size == initialBookList.size) {
+                // No books were deleted.
+                false
+            } else {
+                // Book successfully deleted.
+                bookLiveData.value = newBooks
+                initialBookList = newBooks
+                true
+            }
+        } else {
+            return if (initialBookList.size == 1) {
+                // List had one item and it was deleted
+                bookLiveData.value = emptyList()
+                true
+            } else {
+                // There were no books to delete from
+                false
+            }
+        }
     }
 
     companion object {

@@ -11,9 +11,12 @@ class SplashScreenViewModel : ViewModel() {
     val openMainActivity: LiveData<Boolean> = _openMainActivity
 
     fun load() {
+        // This will be replaced with any real work that needs to be done when the app launches
         Handler().postDelayed({
             _openMainActivity.value = true
         }, 3000)
     }
+
+
 
 }
