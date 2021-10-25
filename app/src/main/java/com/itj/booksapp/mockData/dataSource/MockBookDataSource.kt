@@ -11,18 +11,18 @@ class MockBookDataSource(resources: Resources) : BookRepository {
     private var initialBookList = bookList(resources)
     private val bookLiveData = MutableLiveData(initialBookList)
 
-    override fun getBookForId(id: Int): Book? {
+    override suspend fun getBookForId(id: Int): Book? {
         bookLiveData.value?.let { books ->
             return books.firstOrNull { it.id == id }
         }
         return null;
     }
 
-    override fun getBookList(): LiveData<List<Book>> {
+    override suspend fun getBookList(): LiveData<List<Book>> {
         return bookLiveData;
     }
 
-    override fun deleteBookForId(id: Int): Boolean {
+    override suspend fun deleteBookForId(id: Int): Boolean {
         val newBooks = bookLiveData.value?.let { books ->
             books.filterNot { it.id == id }
         }
