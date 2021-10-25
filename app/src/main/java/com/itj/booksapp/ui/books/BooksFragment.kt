@@ -22,19 +22,20 @@ class BooksFragment : Fragment(), BooksAdapter.BookListCallback {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val application = requireNotNull(this.activity).application
+        val viewModelFactory = BookListViewModelFactory(application)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(BooksViewModel::class.java)
+
         binding = FragmentBooksBinding.inflate(inflater, container, false).apply {
             booksViewModel = viewModel
             lifecycleOwner = viewLifecycleOwner
         }
+        
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val application = requireNotNull(this.activity).application
-        val viewModelFactory = BookListViewModelFactory(application)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(BooksViewModel::class.java)
 
         (activity as MainActivity).supportActionBar?.title = getString(R.string.title_toolbar_books)
 

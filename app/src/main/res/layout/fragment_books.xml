@@ -14,7 +14,6 @@
         android:id="@+id/id_book_wish_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:booksData="@{booksViewModel.booksLiveData}"
         app:layoutManager="LinearLayoutManager"
         tools:listitem="@layout/item_book" />
 

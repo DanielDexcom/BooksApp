@@ -43,7 +43,9 @@ class BooksAdapter(private val bookListCallback: BookListCallback) :
 
         init {
             bookBinding.root.setOnLongClickListener {
-                bookListCallback.onLongClick(bookBinding.book)
+                bookBinding.book?.let {
+                    bookListCallback.onLongClick(it)
+                }
                 true
             }
         }
