@@ -1,4 +1,4 @@
-package com.itj.booksapp.data
+package com.itj.booksapp.data.model
 
 import androidx.annotation.DrawableRes
 

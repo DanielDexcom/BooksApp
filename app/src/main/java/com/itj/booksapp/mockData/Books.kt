@@ -2,6 +2,7 @@ package com.itj.booksapp.data
 
 import android.content.res.Resources
 import com.itj.booksapp.R
+import com.itj.booksapp.data.model.Book
 
 fun bookList(resources: Resources): List<Book> {
     return listOf (
