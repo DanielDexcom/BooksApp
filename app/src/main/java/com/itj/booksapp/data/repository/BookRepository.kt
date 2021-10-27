@@ -1,25 +1,23 @@
 package com.itj.booksapp.data.repository
+import androidx.lifecycle.LiveData
+import com.itj.booksapp.data.model.Book
 
-import com.itj.booksapp.data.remote.model.AuthorEntry
-import com.itj.booksapp.data.remote.model.book.BookDetailEntry
-import com.itj.booksapp.data.remote.model.book.BookEntry
-import com.itj.booksapp.data.remote.source.BookRemoteDataSource
+interface BookRepository {
+    /**
+     * Returns the book corresponding to the given ID. If there is no book with such id, it will
+     * return null
+     */
+    suspend fun getBookForId(id: Int): Book?
 
-class BookRepository(
-    private val bookRemoteDataSource: BookRemoteDataSource
-    // TODO Add localDataSource for wish list
-) {
-    suspend fun getBookByIsbnId(isbn: String): BookEntry {
-        return bookRemoteDataSource.getBookByISBN(isbn)
-    }
+    /**
+     * Returns a list of all the books in the repository
+     */
+    suspend fun getBookList(): LiveData<List<Book>>
 
-    suspend fun getBookDetails(key: String): BookDetailEntry {
-        return bookRemoteDataSource.getBookDetails(key)
-    }
-
-    suspend fun getBookAuthor(key: String): AuthorEntry {
-        return bookRemoteDataSource.getBookAuthor(key)
-    }
-
-    // TODO ADD SAVE BOOK TO WISH LIST AND DELETE BOOK (with localDataSource)
+    /**
+     * Deletes a book from the current repository
+     *
+     * Returns true if the book was deleted. False if not
+     */
+    suspend fun deleteBookForId(id: Int): Boolean
 }

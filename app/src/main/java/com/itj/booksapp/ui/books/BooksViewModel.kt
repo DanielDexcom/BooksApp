@@ -1,13 +1,27 @@
 package com.itj.booksapp.ui.books
 
 import android.content.Context
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.itj.booksapp.data.DataSource
+import androidx.lifecycle.*
+import com.itj.booksapp.data.model.Book
+import com.itj.booksapp.mockData.dataSource.MockBookDataSource
+import com.itj.booksapp.data.repository.BookRepository
+import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 
-class BooksViewModel (val dataSource: DataSource): ViewModel() {
-    val booksLiveData = dataSource.getBookList()
+class BooksViewModel(val booksDataSource: BookRepository) : ViewModel() {
+    lateinit var booksLiveData: LiveData<List<Book>>
+
+    init {
+        viewModelScope.launch {
+            booksLiveData = booksDataSource.getBookList()
+        }
+    }
+
+    fun deleteBook(book: Book) {
+        viewModelScope.launch {
+            booksDataSource.deleteBookForId(book.id)
+        }
+    }
 }
 
 class BookListViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
@@ -15,7 +29,7 @@ class BookListViewModelFactory(private val context: Context) : ViewModelProvider
         if (modelClass.isAssignableFrom(BooksViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return BooksViewModel(
-                dataSource = DataSource.getDataSource(context.resources)
+                booksDataSource = MockBookDataSource.getDataSource(context.resources)
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
