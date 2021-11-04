@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">BooksApp</string>
+
+    <!-- Books Tab -->
+    <string name="title_books">Books</string>
+    <string name="title_books_wishlist">Books Wish List</string>
+
+    <!-- Search Tab -->
+    <string name="title_search">Search</string>
+    <string name="title_isbn_search">ISBN Search</string>
+
+    <!-- Library Tab -->
+    <string name="title_library">Library</string>
 </resources>
