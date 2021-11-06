@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="GreenButtonStyle">
-        <item name="android:textColor">@color/white</item>
         <item name="android:backgroundTint">@color/button_color</item>
+    </style>
+
+    <style name="PurpleTextButtonStyle">
+        <item name="colorOnPrimary">@color/purple_500</item>
+        <item name="android:backgroundTint">@color/white</item>
     </style>
 
 </resources>

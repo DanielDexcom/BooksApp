@@ -4,18 +4,23 @@
     <!-- Books Tab -->
     <string name="title_books">Books</string>
     <string name="title_books_wishlist">Books Wish List</string>
+    <string name="add_book_text">Add Book</string>
+    <string name="detail_text">Detail</string>
 
     <!-- Search Tab -->
     <string name="title_search">Search</string>
     <string name="title_isbn_search">ISBN Search</string>
+    <string name="search_description">Search a book on the top bar to view its information or tap
+        on the camera icon to scan a code.</string>
 
     <!-- Library Tab -->
     <string name="title_library">Library</string>
+    <string name="read_text">Read</string>
 
     <!-- Book Detail -->
     <string name="add_list_text">Add to list</string>
     <string name="get_book_text">Get book</string>
-    <string name="lord_rings_title">The Lord of the Rings Illustrated Edition</string>
+    <string name="lord_rings_title">The Lord of the Rings \n Illustrated Edition</string>
     <string name="author_name">J.R.R Tolkiens</string>
     <string name="description_title">Description</string>
     <string name="description_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius consectetur nulla. Maecenas finibus non lorem eu porttitor. Donec mollis purus ut ante mollis, eget maximus augue convallis. Aenean eget tincidunt lacus. Curabitur in orci non purus vulputate eleifend. Integer sit amet convallis nulla, vel fringilla massa. Nulla facilisi.,,</string>
@@ -25,5 +30,7 @@
     <string name="publisher_placeholder">Lorem isum dolor it,</string>
     <string name="pages_placeholder">412</string>
     <string name="published_date_placeholder">May 13th 1997</string>
+    <string name="view_detail_text">View Detail</string>
+    <string name="author_title_text">Author</string>
 
 </resources>
