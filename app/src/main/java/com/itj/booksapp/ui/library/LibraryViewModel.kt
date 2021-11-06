@@ -19,6 +19,5 @@ class LibraryViewModel(libraryRepository: LibraryRepository) : ViewModel() {
             }
             throw Exception("Model Type not supported")
         }
-
     }
 }
