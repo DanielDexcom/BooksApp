@@ -11,4 +11,19 @@
 
     <!-- Library Tab -->
     <string name="title_library">Library</string>
+
+    <!-- Book Detail -->
+    <string name="add_list_text">Add to list</string>
+    <string name="get_book_text">Get book</string>
+    <string name="lord_rings_title">The Lord of the Rings Illustrated Edition</string>
+    <string name="author_name">J.R.R Tolkiens</string>
+    <string name="description_title">Description</string>
+    <string name="description_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius consectetur nulla. Maecenas finibus non lorem eu porttitor. Donec mollis purus ut ante mollis, eget maximus augue convallis. Aenean eget tincidunt lacus. Curabitur in orci non purus vulputate eleifend. Integer sit amet convallis nulla, vel fringilla massa. Nulla facilisi.,,</string>
+    <string name="publisher_title">Publisher</string>
+    <string name="num_pages_title">Number of Pages</string>
+    <string name="published_date_title">Published Date</string>
+    <string name="publisher_placeholder">Lorem isum dolor it,</string>
+    <string name="pages_placeholder">412</string>
+    <string name="published_date_placeholder">May 13th 1997</string>
+
 </resources>

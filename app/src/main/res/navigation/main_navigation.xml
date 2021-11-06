@@ -11,8 +11,8 @@
         android:label="@string/title_books_wishlist"
         tools:layout="@layout/books_fragment" >
         <action
-            android:id="@+id/action_navigationBooks_to_exampleFragment"
-            app:destination="@id/exampleFragment" />
+            android:id="@+id/action_navigationBooks_to_bookDetailFragment"
+            app:destination="@id/bookDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigationSearch"
@@ -29,4 +29,9 @@
         android:name="com.itj.booksapp.ui.example.ExampleFragment"
         android:label="example_fragment"
         tools:layout="@layout/example_fragment" />
+    <fragment
+        android:id="@+id/bookDetailFragment"
+        android:name="com.itj.booksapp.ui.BookDetailFragment"
+        android:label="book_detail_fragment"
+        tools:layout="@layout/book_detail_fragment" />
 </navigation>

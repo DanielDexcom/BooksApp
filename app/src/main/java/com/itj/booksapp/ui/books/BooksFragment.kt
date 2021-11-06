@@ -30,7 +30,7 @@ class BooksFragment : Fragment() {
 
         val nextButton: Button = view.findViewById(R.id.button_next)
         nextButton.setOnClickListener{
-            it.findNavController().navigate(R.id.action_navigationBooks_to_exampleFragment)
+            it.findNavController().navigate(R.id.action_navigationBooks_to_bookDetailFragment)
         }
 
     }
