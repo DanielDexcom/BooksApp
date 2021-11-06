@@ -1,13 +1,12 @@
 package com.itj.booksapp.ui.books
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.findNavController
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.itj.booksapp.R
 
 class BooksFragment : Fragment() {
@@ -17,22 +16,25 @@ class BooksFragment : Fragment() {
     }
 
     private lateinit var viewModel: BooksViewModel
+    private lateinit var bookList: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.books_fragment, container, false)
+        val rootView = inflater.inflate(R.layout.books_fragment, container, false)
+        bookList = rootView.findViewById(R.id.book_list)
+
+        val booksFactory = BooksViewModel.BooksFactory()
+        viewModel = ViewModelProvider(this, booksFactory).get(BooksViewModel::class.java)
+
+        return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val nextButton: Button = view.findViewById(R.id.button_next)
-        nextButton.setOnClickListener{
-            it.findNavController().navigate(R.id.action_navigationBooks_to_bookDetailFragment)
-        }
-
+        val adapter = BooksAdapter(viewModel.books)
+        bookList.adapter = adapter
     }
 
 }

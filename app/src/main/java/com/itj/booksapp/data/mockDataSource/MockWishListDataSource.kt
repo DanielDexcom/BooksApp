@@ -11,7 +11,7 @@ class MockWishListDataSource: WishListRepository {
         "Author 3",
         "https://www.link.com",
         "Publisher 3",
-        "Today",
+        "May 13th 1997",
         250,
         "none"
     ), Book(
@@ -21,7 +21,7 @@ class MockWishListDataSource: WishListRepository {
         "Author 4",
         "https://www.link.com",
         "Publisher 4",
-        "Yesterday",
+        "Jun 14 1998",
         300,
         "none"
     ))
