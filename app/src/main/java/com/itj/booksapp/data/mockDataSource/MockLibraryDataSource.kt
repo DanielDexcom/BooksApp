@@ -11,7 +11,7 @@ class MockLibraryDataSource: LibraryRepository {
         "Author 1",
         "https://www.link.com",
         "Publisher 1",
-        "Today",
+        "Jul 27th 1996",
         250,
         "none"
     ), Book(
@@ -21,7 +21,7 @@ class MockLibraryDataSource: LibraryRepository {
         "Author 2",
         "https://www.link.com",
         "Publisher 2",
-        "Yesterday",
+        "Oct 5th 1998",
         300,
         "none"
     ))
