@@ -10,10 +10,28 @@
         android:name="com.itj.booksapp.ui.books.BooksFragment"
         android:label="@string/title_books_wishlist"
         tools:layout="@layout/books_fragment" >
+        <argument
+            android:name="book"
+            app:argType="string"
+            android:defaultValue="test"
+            app:nullable="false"/>
+
+<!--        <action-->
+<!--            android:id="@+id/action_navigationBooks_to_addBookDetailDialog"-->
+<!--            app:destination="@id/AddBookDetailDialog">-->
+<!--        </action>-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/AddBookDetailDialog"
+        android:name="com.itj.booksapp.ui.books.AddBookAndDetailDialog"
+        android:label="@string/add_book_text"
+        tools:layout="@layout/add_book_and_detail_dialog">
         <action
-            android:id="@+id/action_navigationBooks_to_bookDetailFragment"
+            android:id="@+id/action_navigationAddBookDetailDialog_to_bookDetailFragment"
             app:destination="@id/bookDetailFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/navigationSearch"
         android:name="com.itj.booksapp.ui.search.SearchFragment"

@@ -4,7 +4,12 @@ import com.itj.booksapp.data.model.Book
 import com.itj.booksapp.data.repository.SearchRepository
 
 class MockSearchDataSource: SearchRepository {
-    override fun search(isbn: String): Book {
+    override fun search(isbn: String): Book? {
+        if (isbn.length < 6) {
+            // Book was not found.
+            return null
+        }
+
         return Book(
             isbn,
             "Title from search",

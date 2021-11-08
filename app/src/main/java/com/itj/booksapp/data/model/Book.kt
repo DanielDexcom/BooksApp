@@ -1,5 +1,7 @@
 package com.itj.booksapp.data.model
 
+import java.io.Serializable
+
 class Book(
     var isbn: String,
     var title: String,
@@ -9,4 +11,4 @@ class Book(
     var publisher: String,
     var publishedDate: String,
     var pages: Int,
-    var image: String)
+    var image: String) : Serializable

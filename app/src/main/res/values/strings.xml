@@ -12,6 +12,8 @@
     <string name="title_isbn_search">ISBN Search</string>
     <string name="search_description">Search a book on the top bar to view its information or tap
         on the camera icon to scan a code.</string>
+    <string name="no_book_found">No book was found.</string>
+    <string name="books_isbn_label">Book ISBN</string>
 
     <!-- Library Tab -->
     <string name="title_library">Library</string>
@@ -32,5 +34,8 @@
     <string name="published_date_placeholder">May 13th 1997</string>
     <string name="view_detail_text">View Detail</string>
     <string name="author_title_text">Author</string>
+
+    <!-- Arguments -->
+    <string name="BOOK">book_arg</string>
 
 </resources>

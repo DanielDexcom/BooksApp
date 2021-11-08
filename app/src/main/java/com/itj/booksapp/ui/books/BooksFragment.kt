@@ -6,10 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.*
+import androidx.navigation.Navigation.createNavigateOnClickListener
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.itj.booksapp.R
+import com.itj.booksapp.data.model.Book
+import com.itj.booksapp.ui.books.AddBookAndDetailDialog.Companion.BOOK
+import com.itj.booksapp.ui.util.BookListCallback
 
-class BooksFragment : Fragment() {
+class BooksFragment : Fragment(), BookListCallback {
 
     companion object {
         fun newInstance() = BooksFragment()
@@ -33,8 +39,21 @@ class BooksFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = BooksAdapter(viewModel.books)
-        bookList.adapter = adapter
+        viewModel.books.observe(viewLifecycleOwner) { books ->
+            var adapter = bookList.adapter
+            if (adapter == null) {
+                adapter = BooksAdapter(books, this)
+                bookList.adapter = adapter
+            } else {
+                (bookList.adapter as BooksAdapter).setBooks(books)
+            }
+        }
+    }
+
+    override fun onClick(book: Book) {
+        val directions = AddBookAndDetailDialogDirections.actionNavigationAddBookDetailDialogToBookDetailFragment()
+        directions.arguments.putSerializable(BOOK, book)
+        findNavController(this).navigate(directions)
     }
 
 }

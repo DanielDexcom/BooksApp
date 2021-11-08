@@ -8,13 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.itj.booksapp.R
 import com.itj.booksapp.data.model.Book
 import com.itj.booksapp.databinding.ItemBookBinding
+import com.itj.booksapp.ui.util.BookListCallback
 
-class BooksAdapter(private val books: List<Book>) :
+class BooksAdapter(
+    private var books: List<Book>,
+    private val callback: BookListCallback
+) :
     RecyclerView.Adapter<BooksAdapter.BookViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val binding = ItemBookBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return BookViewHolder(binding)
+        return BookViewHolder(binding, callback)
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
@@ -24,5 +28,21 @@ class BooksAdapter(private val books: List<Book>) :
 
     override fun getItemCount(): Int = books.size
 
-    class BookViewHolder(val binding: ItemBookBinding) : RecyclerView.ViewHolder(binding.root)
+    fun setBooks(newBooks: List<Book>) {
+        books = newBooks
+        notifyDataSetChanged()
+    }
+
+    class BookViewHolder(
+        val binding: ItemBookBinding,
+        private val callback: BookListCallback
+    ) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                binding.book?.let { book ->
+                    callback.onClick(book)
+                }
+            }
+        }
+    }
 }
