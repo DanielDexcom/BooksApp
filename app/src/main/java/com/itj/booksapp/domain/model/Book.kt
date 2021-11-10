@@ -1,5 +1,6 @@
-package com.itj.booksapp.data.model
+package com.itj.booksapp.domain.model
 
+import androidx.annotation.Nullable
 import java.io.Serializable
 
 class Book(
@@ -7,8 +8,9 @@ class Book(
     var title: String,
     var description: String,
     var author: String,
-    var url: String,
+    @Nullable
+    var url: String?,
     var publisher: String,
     var publishedDate: String,
-    var pages: Int,
+    var pages: Long,
     var image: String) : Serializable

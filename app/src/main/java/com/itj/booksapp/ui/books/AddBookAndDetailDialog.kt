@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.itj.booksapp.R
-import com.itj.booksapp.data.model.Book
+import com.itj.booksapp.domain.model.Book
 
 class AddBookAndDetailDialog : DialogFragment() {
     private lateinit var viewModel: BooksViewModel

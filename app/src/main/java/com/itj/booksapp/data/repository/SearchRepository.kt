@@ -1,9 +1,9 @@
 package com.itj.booksapp.data.repository
 
-import com.itj.booksapp.data.model.Book
+import com.itj.booksapp.domain.model.Book
 
 interface SearchRepository {
 
-    fun search(isbn: String): Book?
+    suspend fun search(isbn: String): Book?
 
 }

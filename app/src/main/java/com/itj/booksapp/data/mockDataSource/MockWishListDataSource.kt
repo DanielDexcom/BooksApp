@@ -2,7 +2,7 @@ package com.itj.booksapp.data.mockDataSource
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.itj.booksapp.data.model.Book
+import com.itj.booksapp.domain.model.Book
 import com.itj.booksapp.data.repository.WishListRepository
 
 class MockWishListDataSource: WishListRepository {

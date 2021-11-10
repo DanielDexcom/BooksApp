@@ -1,6 +1,6 @@
 package com.itj.booksapp.data.mockDataSource
 
-import com.itj.booksapp.data.model.Book
+import com.itj.booksapp.domain.model.Book
 import com.itj.booksapp.data.repository.SearchRepository
 
 class MockSearchDataSource: SearchRepository {

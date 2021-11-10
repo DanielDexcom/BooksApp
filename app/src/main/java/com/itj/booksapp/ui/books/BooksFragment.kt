@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.*
-import androidx.navigation.Navigation.createNavigateOnClickListener
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.itj.booksapp.R
-import com.itj.booksapp.data.model.Book
+import com.itj.booksapp.domain.model.Book
 import com.itj.booksapp.ui.books.AddBookAndDetailDialog.Companion.BOOK
 import com.itj.booksapp.ui.util.BookListCallback
 

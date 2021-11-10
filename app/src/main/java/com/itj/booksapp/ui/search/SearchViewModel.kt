@@ -4,7 +4,7 @@ import android.view.View
 import androidx.databinding.Bindable
 import androidx.lifecycle.*
 import com.itj.booksapp.data.mockDataSource.MockSearchDataSource
-import com.itj.booksapp.data.model.Book
+import com.itj.booksapp.domain.model.Book
 import com.itj.booksapp.data.repository.SearchRepository
 import com.itj.booksapp.ui.util.ObservableViewModel
 import java.lang.Exception
