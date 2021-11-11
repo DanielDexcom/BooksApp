@@ -3,28 +3,24 @@ package com.itj.booksapp.ui.search
 import android.view.View
 import androidx.databinding.Bindable
 import androidx.lifecycle.*
-import com.itj.booksapp.data.mockDataSource.MockSearchDataSource
 import com.itj.booksapp.domain.model.Book
 import com.itj.booksapp.data.repository.SearchRepository
 import com.itj.booksapp.ui.util.ObservableViewModel
 import java.lang.Exception
 import com.itj.booksapp.BR
+import com.itj.booksapp.data.remote.RetrofitBuilder
+import com.itj.booksapp.data.remote.source.BookRemoteDataSource
+import com.itj.booksapp.ui.util.Resource
+import kotlinx.coroutines.launch
+
 
 class SearchViewModel(val searchRepository: SearchRepository) : ObservableViewModel() {
 
     private var _isbn = "123"
-    var isbn: String
-        @Bindable get() = _isbn
-        set(value) {
-            if (value != _isbn) {
-                _isbn = value
-                _bookLiveData.value = searchRepository.search(_isbn)
-                notifyPropertyChanged(BR.isbn)
-            }
-        }
+    var isbn = _isbn
 
-    private val _bookLiveData = MutableLiveData<Book?>(searchRepository.search(_isbn))
-    val bookLiveData: LiveData<Book?> = _bookLiveData
+    private val _bookLiveData = MutableLiveData<Resource<Book>?>()
+    val bookLiveData: LiveData<Resource<Book>?> = _bookLiveData
 
     val bookContainerVisibility: LiveData<Int> = _bookLiveData.switchMap { book ->
         val visibility = if (book == null)
@@ -32,6 +28,18 @@ class SearchViewModel(val searchRepository: SearchRepository) : ObservableViewMo
         else
             View.VISIBLE
         MutableLiveData(visibility)
+    }
+
+    suspend fun getBookByIsbn(isbn : String) {
+        try {
+            val book = searchRepository.search(isbn)
+            if (book != null) {
+                _bookLiveData.value = Resource.success(book)
+            }
+        }
+        catch (ex : Exception) {
+            _bookLiveData.value = Resource.error(null, ex.localizedMessage)
+        }
     }
 
     val searchContainerVisibility: LiveData<Int> =
@@ -48,7 +56,7 @@ class SearchViewModel(val searchRepository: SearchRepository) : ObservableViewMo
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
                 return SearchViewModel(
-                    searchRepository = MockSearchDataSource()
+                    searchRepository = BookRemoteDataSource(RetrofitBuilder.bookRemoteApi)
                 ) as T
             }
 

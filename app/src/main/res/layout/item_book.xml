@@ -5,7 +5,7 @@
 
         <variable
             name="book"
-            type="com.itj.booksapp.data.model.Book" />
+            type="com.itj.booksapp.domain.model.Book" />
     </data>
 
     <FrameLayout

@@ -9,7 +9,7 @@ import retrofit2.await
 
 class BookRemoteDataSource (private val bookRemoteApi: BookRemoteApi): SearchRepository {
 
-    override suspend fun search(isbn: String): Book? {
+    override suspend fun search(isbn: String): Book {
         val bookEntry = bookRemoteApi.getBookByIsbn(isbn).await()
         val bookDescription = getBookDetail(bookEntry.works[0].key)
         val bookAuthor = getBookAuthor(bookEntry.authors[0].key)
