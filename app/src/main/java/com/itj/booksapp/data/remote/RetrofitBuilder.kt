@@ -1,5 +1,6 @@
 package com.itj.booksapp.data.remote
 
+import androidx.viewbinding.BuildConfig
 import com.itj.booksapp.data.remote.net.BookRemoteApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,15 +13,18 @@ object RetrofitBuilder {
 
     private fun getRetrofit() : Retrofit {
 
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
-
-        return Retrofit.Builder()
+        val retrofitBuilder = Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
-            .build()
+
+        if (BuildConfig.BUILD_TYPE.equals("debug")) {
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
+            val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+            retrofitBuilder.client(client)
+        }
+
+        return retrofitBuilder.build()
 
     }
 
