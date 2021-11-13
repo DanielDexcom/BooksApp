@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.BookDetailFragment">
+
+    <data>
+        <variable
+            name="book"
+            type="com.itj.booksapp.domain.model.Book" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.BookDetailFragment">
-
+    >
 
     <ImageView
         android:id="@+id/bookCoverImage"
@@ -17,6 +25,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.418"
         app:layout_constraintStart_toStartOf="parent"
+        app:loadBookImage="@{book.image}"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -55,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/lord_rings_title"
+        android:text="@{book.title}"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/bookCoverImage"
@@ -66,7 +75,7 @@
         android:id="@+id/author_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/author_name"
+        android:text="@{book.author}"
         android:layout_marginTop="8dp"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -91,7 +100,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="8dp"
-        android:text="@string/description_placeholder"
+        android:text="@{book.description}"
+        android:maxHeight="100dp"
+        android:ellipsize="end"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description_title" />
@@ -133,7 +144,7 @@
         android:id="@+id/publisher_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/publisher_placeholder"
+        android:text="@{book.publisher}"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/publisher_title"
         tools:text="@string/publisher_placeholder"/>
@@ -143,7 +154,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/pages_placeholder"
+        android:text="@{String.valueOf(book.pages)}"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/publisher_value" />
 
@@ -152,9 +163,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/published_date_placeholder"
+        android:text="@{book.publishedDate}"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/num_pages_value" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

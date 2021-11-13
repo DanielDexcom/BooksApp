@@ -1,5 +1,6 @@
 package com.itj.booksapp.ui.search
 
+import android.opengl.Visibility
 import android.view.View
 import androidx.databinding.Bindable
 import androidx.lifecycle.*
@@ -19,16 +20,18 @@ class SearchViewModel(val searchRepository: SearchRepository) : ObservableViewMo
     private var _isbn = "123"
     var isbn = _isbn
 
-    private val _bookLiveData = MutableLiveData<Resource<Book>?>()
+    private val _bookLiveData : MutableLiveData<Resource<Book>?> =
+        MutableLiveData(null)
     val bookLiveData: LiveData<Resource<Book>?> = _bookLiveData
 
-    val bookContainerVisibility: LiveData<Int> = _bookLiveData.switchMap { book ->
+    var bookContainerVisibility : LiveData<Int> = _bookLiveData.switchMap { book ->
         val visibility = if (book == null)
             View.GONE
         else
             View.VISIBLE
-        MutableLiveData(visibility)
+         MutableLiveData(visibility)
     }
+
 
     suspend fun getBookByIsbn(isbn : String) {
         try {

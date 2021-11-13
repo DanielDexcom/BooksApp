@@ -26,11 +26,11 @@ class MockLibraryDataSource: LibraryRepository {
         "none"
     ))
 
-    override fun getAll(): List<Book> {
+    suspend override fun getAll(): List<Book> {
         return books
     }
 
-    override fun add(book: Book) {
+    suspend override fun add(book: Book) {
         books.add(book)
     }
 }

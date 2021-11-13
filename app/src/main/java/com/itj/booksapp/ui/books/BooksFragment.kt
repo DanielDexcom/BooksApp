@@ -46,10 +46,11 @@ class BooksFragment : Fragment(), BookListCallback {
                 (bookList.adapter as BooksAdapter).setBooks(books)
             }
         }
+        viewModel.getAllBooks()
     }
 
     override fun onClick(book: Book) {
-        val directions = AddBookAndDetailDialogDirections.actionNavigationAddBookDetailDialogToBookDetailFragment()
+        val directions = BooksFragmentDirections.actionNavigationBooksToAddBookDetailDialog(book)
         directions.arguments.putSerializable(BOOK, book)
         findNavController(this).navigate(directions)
     }

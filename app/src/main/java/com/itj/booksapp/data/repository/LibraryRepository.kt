@@ -4,8 +4,8 @@ import com.itj.booksapp.domain.model.Book
 
 interface LibraryRepository {
 
-    fun getAll(): List<Book>
+    suspend fun getAll(): List<Book>
 
-    fun add(book: Book)
+    suspend fun add(book: Book)
 
 }

@@ -1,4 +1,4 @@
-package com.itj.booksapp.ui.example
+package com.itj.booksapp.ui.read
 
 import androidx.lifecycle.ViewModel
 

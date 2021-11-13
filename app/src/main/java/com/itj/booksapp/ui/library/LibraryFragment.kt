@@ -6,10 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.itj.booksapp.R
+import com.itj.booksapp.domain.model.Book
+import com.itj.booksapp.ui.util.BookListCallback
+import kotlinx.coroutines.launch
 
-class LibraryFragment : Fragment() {
+class LibraryFragment : Fragment() , BookListCallback {
 
     companion object {
         fun newInstance() = LibraryFragment()
@@ -31,7 +36,19 @@ class LibraryFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         val factory = LibraryViewModel.LibraryViewModelFactory()
         viewModel = ViewModelProvider(this, factory).get(LibraryViewModel::class.java)
-        libraryList.adapter = LibraryAdapter(viewModel.books)
+        viewModel.books.observe(viewLifecycleOwner) { books ->
+            libraryList.adapter = viewModel.books.value?.let {
+                LibraryAdapter(it,this)
+            }
+        }
+        lifecycleScope.launch() {
+            viewModel.getLibraryBooks()
+        }
+    }
+
+    override fun onClick(book: Book) {
+        val directions = LibraryFragmentDirections.actionNavigationLibraryToReadAndDetailDialog(book)
+        NavHostFragment.findNavController(this).navigate(directions)
     }
 
 }

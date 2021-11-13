@@ -6,6 +6,7 @@
     <string name="title_books_wishlist">Books Wish List</string>
     <string name="add_book_text">Add Book</string>
     <string name="detail_text">Detail</string>
+    <string name="please_add_an_url">Please add an url</string>
 
     <!-- Search Tab -->
     <string name="title_search">Search</string>
@@ -14,6 +15,8 @@
         on the camera icon to scan a code.</string>
     <string name="no_book_found">No book was found.</string>
     <string name="books_isbn_label">Book ISBN</string>
+    <string name="scan_bar_or_qr_code">Scan a Bar Code or a QR Code</string>
+    <string name="canceled">Canceled</string>
 
     <!-- Library Tab -->
     <string name="title_library">Library</string>

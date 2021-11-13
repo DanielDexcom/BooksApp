@@ -29,15 +29,15 @@ class MockWishListDataSource: WishListRepository {
         "none"
     )))
 
-    override fun getAll(): LiveData<List<Book>> {
+    override suspend fun getAll(): LiveData<List<Book>> {
         return books
     }
 
-    override fun add(book: Book) {
+    suspend override fun add(book: Book) {
         // Todo Add to the list
     }
 
-    override fun remove(book: Book): Boolean {
+    suspend override fun remove(book: Book): Boolean {
         val initialBooks = books.value ?: return false
         val newBooks = books.value?.let { books->
             books.filterNot { it.isbn == book.isbn }

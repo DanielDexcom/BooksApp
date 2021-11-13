@@ -15,8 +15,11 @@
             app:argType="string"
             android:defaultValue="test"
             app:nullable="false"/>
+        <action
+            android:id="@+id/action_navigationBooks_to_AddBookDetailDialog"
+            app:destination="@id/AddBookDetailDialog" />
 
-<!--        <action-->
+        <!--        <action-->
 <!--            android:id="@+id/action_navigationBooks_to_addBookDetailDialog"-->
 <!--            app:destination="@id/AddBookDetailDialog">-->
 <!--        </action>-->
@@ -30,26 +33,75 @@
         <action
             android:id="@+id/action_navigationAddBookDetailDialog_to_bookDetailFragment"
             app:destination="@id/bookDetailFragment" />
+        <argument
+            android:name="book_arg"
+            app:argType="com.itj.booksapp.domain.model.Book" />
+        <action
+            android:id="@+id/action_AddBookDetailDialog_to_AddBookDialog"
+            app:destination="@id/AddBookDialog" />
     </fragment>
 
     <fragment
         android:id="@+id/navigationSearch"
         android:name="com.itj.booksapp.ui.search.SearchFragment"
         android:label="@string/title_isbn_search"
-        tools:layout="@layout/search_fragment" />
+        tools:layout="@layout/search_fragment" >
+        <action
+            android:id="@+id/action_navigationSearch_to_bookDetailFragment"
+            app:destination="@id/bookDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigationLibrary"
         android:name="com.itj.booksapp.ui.library.LibraryFragment"
         android:label="@string/title_library"
-        tools:layout="@layout/library_fragment" />
+        tools:layout="@layout/library_fragment" >
+        <action
+            android:id="@+id/action_navigationLibrary_to_ReadAndDetailDialog"
+            app:destination="@id/ReadAndDetailDialog" />
+    </fragment>
     <fragment
-        android:id="@+id/exampleFragment"
-        android:name="com.itj.booksapp.ui.example.ExampleFragment"
+        android:id="@+id/readFragment"
+        android:name="com.itj.booksapp.ui.read.ReadFragment"
         android:label="example_fragment"
-        tools:layout="@layout/example_fragment" />
+        tools:layout="@layout/read_fragment" >
+        <argument
+            android:name="book_arg"
+            app:argType="com.itj.booksapp.domain.model.Book" />
+    </fragment>
     <fragment
         android:id="@+id/bookDetailFragment"
         android:name="com.itj.booksapp.ui.BookDetailFragment"
-        android:label="book_detail_fragment"
-        tools:layout="@layout/book_detail_fragment" />
+        android:label="@string/detail_text"
+        tools:layout="@layout/book_detail_fragment">
+        <argument
+            android:name="book_arg"
+            app:argType="com.itj.booksapp.domain.model.Book" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AddBookDialog"
+        android:name="com.itj.booksapp.ui.books.AddBookDialog"
+        android:label="@string/add_book_text"
+        tools:layout="@layout/add_book_dialog">
+        <argument
+            android:name="book_arg"
+            app:argType="com.itj.booksapp.domain.model.Book" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ReadAndDetailDialog"
+        android:name="com.itj.booksapp.ui.library.ReadBookAndDetailDialog"
+        android:label="@string/add_book_text"
+        tools:layout="@layout/read_and_detail_dialog">
+        <argument
+            android:name="book_arg"
+            app:argType="com.itj.booksapp.domain.model.Book" />
+        <action
+            android:id="@+id/action_ReadAndDetailDialog_to_bookDetailFragment"
+            app:destination="@id/bookDetailFragment" />
+        <action
+            android:id="@+id/action_ReadAndDetailDialog_to_exampleFragment"
+            app:destination="@id/readFragment" />
+    </fragment>
+
 </navigation>
